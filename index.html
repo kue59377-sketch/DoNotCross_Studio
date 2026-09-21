@@ -492,6 +492,11 @@ body.hero-in .hero-scroll{animation:heroUp .5s ease .9s forwards}
 @keyframes heroPunch{0%{opacity:0;transform:scale(1.12) translate3d(0,10px,0)}60%{opacity:1;transform:scale(.985) translate3d(0,0,0)}100%{opacity:1;transform:none}}
 @keyframes heroUp{0%{opacity:0;transform:translate3d(0,18px,0)}100%{opacity:1;transform:none}}
 
+@media(max-width:800px) and (orientation:portrait){
+  .intro-bg,.hero-bg{background-size:100% auto;background-position:center 42%;background-color:#050505;background-repeat:no-repeat}
+  .intro-bg,.intro.cut .intro-bg{transform:scale(1)}
+  .hero-bg{height:100svh}
+}
 @media(max-width:800px){
   .intro-tape{height:58px}.intro-tape.t2{height:72px}
   .intro-tape .track{gap:26px;padding:0 20px;font-size:10px}
