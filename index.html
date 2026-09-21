@@ -152,26 +152,30 @@ button,a{touch-action:manipulation}
 .log-head .lh-col:last-child{border-right:0}
 .log-row{display:grid;grid-template-columns:56px minmax(180px,1fr) 104px 88px;grid-template-rows:auto;gap:0;padding:0;border-bottom:1px solid #1a1a1a;align-items:center;transition:background .12s ease,color .12s ease;cursor:pointer;height:54px}
 .log-row:hover{background:#0b0b0b}
-.log-row.sel,.log-row.sel:hover{background:var(--yellow)!important;color:#050505}
+.log-row.sel,.log-row.sel:hover{background:#0b0b0b}
+.log-matte{position:absolute;left:0;right:0;top:0;bottom:0;grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:inherit;align-items:center;background:var(--yellow);color:#050505;clip-path:inset(0 100% 0 0);transition:clip-path .38s cubic-bezier(.2,.8,.2,1);pointer-events:none;z-index:2}
+.log-row.sel .log-matte{clip-path:inset(0 0 0 0)}
+.log-matte *{color:#050505!important;border-color:#050505!important}
+.log-matte h3::before{background:#050505!important}
 .log-date{grid-column:3;grid-row:1;justify-self:start;display:block;background:none;color:#9e8400;padding:0 14px;font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;clip-path:none}
-.log-row.sel .log-date{color:#050505}
-.log-row>div:not(.log-no){grid-column:2;grid-row:1;max-width:none;padding:0 14px;min-width:0;display:flex;align-items:center;gap:14px;flex-wrap:nowrap;overflow:hidden}
+.log-row.sel .log-date{}
+.log-row>div:not(.log-no):not(.log-matte),.log-matte>div:not(.log-no){grid-column:2;grid-row:1;max-width:none;padding:0 14px;min-width:0;display:flex;align-items:center;gap:14px;flex-wrap:nowrap;overflow:hidden}
 .log-row h3{margin:0;font:500 clamp(15px,1.2vw,17px)/1.3 "Noto Sans KR",sans-serif;letter-spacing:-.01em;color:var(--paper);display:inline-flex;align-items:center;gap:12px;white-space:nowrap}
 .log-row h3::before{content:"";width:12px;height:14px;background:#9e8400;clip-path:polygon(0 0,70% 0,100% 25%,100% 100%,0 100%);flex:none}
 .log-row h3::after{content:".log";color:#6f6858;font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.08em}
-.log-row.sel h3,.log-row.sel h3::after{color:#050505}
-.log-row.sel h3::before{background:#050505}
+.log-row.sel h3,.log-row.sel h3::after{}
+.log-row.sel h3::before{}
 .log-row p{display:none}
 .log-no{grid-column:1;grid-row:1;align-self:center;font:600 11px/1 "IBM Plex Mono",monospace;color:#6f6858;-webkit-text-stroke:0;letter-spacing:.12em;margin:0;padding:0 14px;position:relative;transition:color .12s ease}
 .log-no::before{display:none}
 .log-row.passed .log-no{color:var(--yellow);-webkit-text-stroke:0}
-.log-row.sel .log-no,.log-row.passed.sel .log-no{color:#050505}
+.log-row.sel .log-no,.log-row.passed.sel .log-no{}
 .log-row{position:relative}
 .log-row .log-stamp{grid-column:4;grid-row:1;position:static;transform:none;opacity:1;border:1px solid #2f2f2f;color:#5f5a4c;padding:4px 7px;margin:0 12px;justify-self:start;font:700 10px/1 "IBM Plex Mono",monospace;letter-spacing:.2em;transition:none}
 .log-row .log-stamp::before{content:"QUEUED"}
 .log-row.passed .log-stamp{opacity:1;transform:none;border-color:var(--yellow);color:var(--yellow)}
 .log-row.passed .log-stamp::before{content:"LOGGED"}
-.log-row.sel .log-stamp{border-color:#050505;color:#050505}
+.log-row.sel .log-stamp{}
 .log-row .log-stamp{font-size:0}
 .log-row .log-stamp::before{font-size:10px}
 .win-prev{border-left:1px solid #232323;background:#050505;padding:18px 20px;display:flex;flex-direction:column;gap:12px;min-width:0}
@@ -189,7 +193,27 @@ button,a{touch-action:manipulation}
 .win-status .grow{flex:1}.win-status .ok{color:var(--yellow)}
 @media(max-width:1200px){.win-body{grid-template-columns:160px minmax(0,1fr)}.win-prev{display:none}}
 @media(max-width:900px){.win-body{grid-template-columns:minmax(0,1fr)}.win-side,.win-prev{display:none}.log-row p{display:none}}
-@media(max-width:650px){.log-head,.log-row{grid-template-columns:44px minmax(0,1fr) 84px}.log-head .lh-c4,.log-row .log-stamp{display:none}.log-row>div:not(.log-no){padding:0 10px}.log-date{font-size:11px;padding:0 10px}.log-no{padding:0 10px;font-size:11px}.win-tool .tb-search,.win-title .wt-sys{display:none}}
+@media(max-width:650px){
+  .log-list{border:0;border-top:3px solid var(--yellow);background:transparent}
+  .win-title,.win-tool,.log-head,.win-files .log-empty,.win-status,.log-matte{display:none!important}
+  .win-body{min-height:0;display:block}
+  .win-files{background:transparent}
+  .win-files .log-row{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:10px 18px;height:auto;padding:26px 0 28px;border-bottom:1px dashed #262626;position:relative;cursor:default;align-items:start;background:transparent}
+  .win-files .log-row.sel,.win-files .log-row.sel:hover,.win-files .log-row:hover{background:transparent}
+  .log-row .log-no{grid-column:1;grid-row:1/3;align-self:start;margin-top:2px;padding:0;font:400 44px/.78 "Black Han Sans",sans-serif;color:#1a1914;-webkit-text-stroke:2px #2b2a22;letter-spacing:-.06em;margin-left:-.03em;position:relative;transition:color .35s ease}
+  .log-no::before{content:"LOG";display:block;position:absolute;left:.06em;top:-13px;font:600 8px/1 "IBM Plex Mono",monospace;color:#4d483d;letter-spacing:.3em;-webkit-text-stroke:0}
+  .log-row.passed .log-no{color:#3a3418;-webkit-text-stroke:2px #6d5a00}
+  .log-row.passed .log-no::before{color:var(--yellow)}
+  .log-row .log-date{grid-column:2;grid-row:1;justify-self:start;align-self:center;display:inline-block;background:transparent;color:#9e8400;padding:0;font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.16em;clip-path:none}
+  .log-row.passed .log-date{background:transparent;color:var(--yellow)}
+  .log-row .log-stamp{display:inline-block;position:static;grid-column:2;grid-row:1;justify-self:end;margin:0;padding:3px 6px;font-size:0;border:1px solid #2f2f2f;transform:none;color:#5f5a4c}
+  .log-row .log-stamp::before{font-size:8px;letter-spacing:.2em}
+  .log-row.passed .log-stamp{border-color:var(--yellow)}
+  .log-row>div:not(.log-no):not(.log-matte){grid-column:2;grid-row:2;padding:0 0 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:8px;overflow:visible}
+  .log-row h3{font:500 17px/1.35 "Noto Sans KR",sans-serif;letter-spacing:-.01em;white-space:normal;display:block;padding:0;color:var(--paper)}
+  .log-row h3::before,.log-row h3::after{display:none}
+  .log-row p{display:block;margin:0;color:#8e8777;font:400 13px/1.65 "Noto Sans KR",sans-serif}
+}
 
 /* team */
 .id-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -379,7 +403,7 @@ footer{padding:34px 0 50px;color:#6f695d;font:500 10px/1.6 "IBM Plex Mono",monos
 .log-list{border-top-color:var(--yellow)}
 .log-row{padding:0}
 .log-row:hover{background:#0b0b0b}
-.log-row.sel,.log-row.sel:hover{background:var(--yellow)}
+.log-row.sel,.log-row.sel:hover{background:#0b0b0b}
 .log-date{color:#9e8400}
 .log-no{color:#6f6858}
 
@@ -690,9 +714,8 @@ body.hero-in .hero-scroll{animation:heroUp .5s ease .9s forwards}
 .log-row{position:relative}
 .log-row::after{display:none}
 .log-row.passed::after{display:none}
-.log-row.passed .log-date{background:none;color:var(--paper)}
+.log-row.passed .log-date{}
 @media(max-width:650px){.log-list{padding-left:0}}
-@media(max-width:650px){.log-list{padding-left:24px}.log-row::after{left:-24px}.log-date{font-size:20px}.log-row h3{font-size:22px}}
 
 .area-hud{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:36;display:grid;gap:15px;justify-items:end;pointer-events:none}
 .area-hud .dot{display:flex;align-items:center;gap:10px;color:#4b463c;font:600 9px/1 "IBM Plex Mono",monospace;letter-spacing:.15em;opacity:.6;transition:color .35s ease,opacity .35s ease}
@@ -925,6 +948,7 @@ class Component extends DCLogic {
     const logList = d.querySelector('.log-list');
     const logScrub = d.querySelector('.log-scrub');
     const logRows = q('.log-row');
+    logRows.forEach(r => { const m = d.createElement('div'); m.className = 'log-matte'; m.setAttribute('aria-hidden', 'true'); Array.from(r.children).forEach(c => m.appendChild(c.cloneNode(true))); r.appendChild(m); });
     /* 탐색기 미리보기 */
     const wpFile = d.getElementById('wpFile'), wpMeta = d.getElementById('wpMeta'), wpBody = d.getElementById('wpBody'), wsSel = d.getElementById('wsSel');
     const selectLog = (row) => {
