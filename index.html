@@ -275,10 +275,11 @@ footer{padding:34px 0 50px;color:#6f695d;font:500 10px/1.6 "IBM Plex Mono",monos
 
 /* 섹션 헤드가 스크롤에 걸리며 조립되는 느낌 */
 .section-head .area{opacity:0;transform:translateX(-36px);transition:opacity .55s ease,transform .75s cubic-bezier(.16,1,.3,1)}
-.section-head .section-title{opacity:0;transform:translateY(58px) skewY(2deg);clip-path:inset(0 0 100% 0);transition:opacity .35s ease,transform .9s cubic-bezier(.16,1,.3,1),clip-path .9s cubic-bezier(.16,1,.3,1)}
+.section-head .section-title{opacity:0;transform:translateY(58px) skewY(2deg);clip-path:inset(0 0 100% 0);transition:opacity .35s ease,transform .9s cubic-bezier(.16,1,.3,1),clip-path .9s cubic-bezier(.16,1,.3,1);color:transparent}
 .section-head .section-desc{opacity:0;transform:translateY(20px);transition:opacity .55s .2s ease,transform .65s .2s ease}
 .section-head.in .area{opacity:1;transform:none}
-.section-head.in .section-title{opacity:1;transform:none;clip-path:inset(0)}
+.section-head.in .section-title{opacity:1;transform:none;clip-path:inset(0);animation:titleInk .01s linear .44s forwards}
+@keyframes titleInk{to{color:var(--paper)}}
 .section-head.in .section-desc{opacity:1;transform:none}
 
 /* 카드류: 단순 fade 대신 서로 다른 방향에서 들어옴 */
