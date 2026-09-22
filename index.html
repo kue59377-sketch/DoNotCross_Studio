@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>출입금지 스튜디오</title>
-<meta name="description" content="출입금지 스튜디오 — 아직 만드는 중인 게임들. 첫 게임 바리 음악사무소 개발 중.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
@@ -237,6 +237,16 @@ button,a{touch-action:manipulation}
 .openings{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
 .opening{background:#050505;color:var(--paper);padding:28px;min-height:240px;position:relative;border:3px solid #050505;box-shadow:10px 10px 0 rgba(0,0,0,.2)}
 .opening .open-tag{display:inline-block;background:var(--yellow);color:#050505;padding:4px 7px;font:600 9px/1 "IBM Plex Mono",monospace;letter-spacing:.12em}.opening .role{font:400 44px/.95 "Black Han Sans",sans-serif;margin-top:26px}.opening p{color:#aca38f;font-size:14px;max-width:430px}.opening .arrow{position:absolute;right:22px;bottom:18px;font:600 32px/1 "IBM Plex Mono",monospace;color:var(--yellow)}
+.opening .open-link{display:inline-flex;align-items:stretch;margin-top:16px;border:1px solid var(--yellow);position:relative;overflow:hidden;transition:.2s;text-decoration:none}
+.opening .open-link .ol-stripe{width:13px;flex-shrink:0;background:repeating-linear-gradient(-45deg,var(--yellow) 0 6px,#050505 6px 12px)}
+.opening .open-link .ol-body{display:flex;flex-direction:column;gap:4px;padding:9px 18px 9px 14px}
+.opening .open-link .ol-code{font:700 9px/1 "IBM Plex Mono",monospace;letter-spacing:.16em;color:#8c7500}
+.opening .open-link .ol-txt{font:700 13px/1 "IBM Plex Mono",monospace;letter-spacing:.03em;color:var(--yellow);display:flex;align-items:center;gap:8px}
+.opening .open-link .ol-txt i{font-style:normal;transition:transform .2s}
+.opening .open-link:hover{background:var(--yellow)}
+.opening .open-link:hover .ol-code{color:#050505;opacity:.65}
+.opening .open-link:hover .ol-txt{color:#050505}
+.opening .open-link:hover .ol-txt i{transform:translateX(4px)}
 .recruit-note{margin-top:16px;background:#050505;color:var(--paper);padding:24px 28px;display:flex;justify-content:space-between;gap:24px;align-items:center}.recruit-note b{font-size:18px}.recruit-note a{display:inline-block;border:1px solid var(--yellow);padding:10px 14px;color:var(--yellow);font:600 11px/1 "IBM Plex Mono",monospace;white-space:nowrap}
 @media(max-width:800px){.recruit-head{grid-template-columns:1fr}.recruit-mark{position:absolute;right:-70px;top:80px;width:190px;opacity:.22}.openings{grid-template-columns:1fr}.recruit-note{align-items:flex-start;flex-direction:column}}
 
@@ -668,6 +678,7 @@ body.hero-in .hero-scroll{animation:heroUp .5s ease .9s forwards}
 .crew-row:hover{background-color:#0a0a0a}
 .crew-row:hover::before{transform:scaleY(1)}
 .crew-row .c-no{grid-column:1;grid-row:1/3;align-self:center;font:400 clamp(96px,11vw,150px)/.76 "Black Han Sans",sans-serif;color:#1f1e18;letter-spacing:-.07em;margin-left:-.04em;padding:0;transition:color .25s ease;-webkit-text-stroke:2px #2b2a22}
+.crew-row .c-no span{line-height:inherit!important}
 .crew-row:hover .c-no{color:#2c2a1f}
 .crew-row .c-role{grid-column:2;grid-row:1;align-self:end;justify-self:start;position:relative;display:inline-flex;align-items:center;gap:12px;color:var(--yellow);font:700 12px/1 "IBM Plex Mono",monospace;letter-spacing:.34em;text-transform:uppercase;white-space:nowrap;padding:0 0 0 2px}
 .crew-row .c-role::before{content:"";width:9px;height:9px;background:var(--yellow);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);flex:none}
@@ -691,7 +702,7 @@ body.hero-in .hero-scroll{animation:heroUp .5s ease .9s forwards}
 @media(max-width:860px){
   .crew-row{grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto auto;gap:6px 16px;padding:14px 12px 16px 0;background:none}
   .crew-row::after{display:none}
-  .crew-row .c-no{grid-row:1/4;font-size:clamp(88px,26vw,120px)}
+  .crew-row .c-no{font-size:clamp(88px,26vw,120px);grid-row:1/4}
   .crew-row .c-role{grid-column:2;grid-row:1;font-size:10px;letter-spacing:.26em;align-self:end}
   .crew-row .c-role::after{width:32px}
   .crew-row .c-name{grid-column:2;grid-row:2;font-size:30px;align-self:center;padding-bottom:8px}
@@ -745,8 +756,13 @@ body::after{opacity:var(--scanOp,.28)}
 }
 
 </style>
+
 </head>
 <body>
+
+<template id="__bundler_thumbnail" data-bg-color="#050505">
+  <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#050505"></rect></svg>
+</template>
 <div class="progress" aria-hidden="true"></div>
 <div class="intro" id="intro" aria-hidden="true">
   <div class="intro-bg"></div>
@@ -849,11 +865,11 @@ body::after{opacity:var(--scanOp,.28)}
   <div class="wrap">
     <div class="section-head reveal"><div class="area">03 / TEAM</div><div><h2 class="section-title display" data-en="TEAM">팀</h2><p class="section-desc">현재 함께 작업하고 있는 멤버입니다.</p></div></div>
     <div class="crew reveal">
-      <article class="crew-row"><span class="c-no">01</span><span class="c-role">SCENARIO DESIGN</span><span class="c-name">김윤재</span><p>「출입금지 스튜디오」세계관을 만들고 있습니다.</p></article>
-      <article class="crew-row"><span class="c-no">02</span><span class="c-role">PROGRAMMING</span><span class="c-name">할렐루야</span><p>아이디어를 실제 게임으로 구현합니다.</p></article>
-      <article class="crew-row"><span class="c-no">03</span><span class="c-role">SYSTEM DESIGN</span><span class="c-name">김태훈</span><p>플레이의 규칙과 구조를 설계합니다.</p></article>
-      <article class="crew-row"><span class="c-no">04</span><span class="c-role">SPRITE</span><span class="c-name">얀데레하우스</span><p>캐릭터와 오브젝트 스프라이트를 그립니다.</p></article>
-      <article class="crew-row"><span class="c-no">05</span><span class="c-role">MUSIC</span><span class="c-name">ML</span><p>게임의 분위기를 음악으로 채웁니다.</p></article>
+      <article class="crew-row"><span class="c-no" style="text-decoration-line: none; line-height: 50.1px">01</span><span class="c-role">SCENARIO DESIGN</span><span class="c-name">김윤재</span><p>「출입금지 스튜디오」세계관을 만들고 있습니다.</p></article>
+      <article class="crew-row"><span class="c-no" style="line-height: 49.45px">02</span><span class="c-role">PROGRAMMING</span><span class="c-name">할렐루야</span><p>아이디어를 실제 게임으로 구현합니다.</p></article>
+      <article class="crew-row"><span class="c-no" style="line-height: 60.4px">03</span><span class="c-role">SYSTEM DESIGN</span><span class="c-name">김태훈</span><p>플레이의 규칙과 구조를 설계합니다.</p></article>
+      <article class="crew-row"><span class="c-no" style="line-height: 58.55px">04</span><span class="c-role">SPRITE</span><span class="c-name">얀데레하우스</span><p>캐릭터와 오브젝트 스프라이트를 그립니다.</p></article>
+      <article class="crew-row"><span class="c-no" style="line-height: 63.25px">05</span><span class="c-role">MUSIC</span><span class="c-name">ML</span><p>게임의 분위기를 음악으로 채웁니다.</p></article>
     </div>
   </div>
 </section>
@@ -862,7 +878,7 @@ body::after{opacity:var(--scanOp,.28)}
   <div class="wrap recruit-in">
     <div class="recruit-head reveal"><div><div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.13em;margin-bottom:16px">04 / RECRUIT</div><h2 class="display">함께 만들<br>사람을 찾습니다.</h2><p>아트 파트를 모집하고 있습니다.</p></div></div>
     <div class="openings reveal">
-      <article class="opening"><span class="open-tag">OPEN / 01</span><div class="role">아트</div><p>UI, 배경, 캐릭터 스프라이트 작업. 현재 기획 자료와 기준 이미지가 있습니다.</p></article>
+      <article class="opening"><span class="open-tag">OPEN / 01</span><div class="role">아트</div><p>UI, 배경, 캐릭터 스프라이트 작업. 현재 기획 자료와 기준 이미지가 있습니다.</p><a class="open-link" href="https://kue59377-sketch.github.io/bari-art-recruit/" target="_blank" rel="noopener"><span class="ol-stripe"></span><span class="ol-body"><span class="ol-code">PERMIT NO. 04A</span><span class="ol-txt">채용 공고 보기<i>→</i></span></span></a></article>
     </div>
     <div class="recruit-note reveal"><div><b>지원 방법</b><div style="margin-top:5px;color:#a89f8b;font-size:13px">작업물 링크와 짧은 소개를 보내주세요. 포트폴리오 형식은 자유입니다.</div></div><a href="#contact">CONTACT →</a></div>
   </div>
@@ -891,13 +907,14 @@ body::after{opacity:var(--scanOp,.28)}
   <a class="dot" data-area="contact"><span>05 CONTACT</span><i></i></a>
 </div>
 <footer><div class="wrap footer-in"><span>© 2026 출입금지 스튜디오</span><span class="live">바리 음악사무소 — 개발 중</span></div></footer>
-<script>
-class DCLogic {}
+</x-dc>
 
-class Component extends DCLogic {
-  componentDidMount() {
+<script>
+const PROPS = { introSeal: true, motionScale: 1, areaHud: true };
+(function(){
+
     const reduce = false;
-    const k = () => this.props.motionScale ?? 1;
+    const k = () => PROPS.motionScale ?? 1;
     const d = document;
     const q = (s) => [...d.querySelectorAll(s)];
     const clamp01 = (v) => v < 0 ? 0 : v > 1 ? 1 : v;
@@ -969,7 +986,7 @@ class Component extends DCLogic {
     const hud = d.querySelector('.area-hud');
     const hudDots = q('.area-hud .dot');
 
-    if (hud && this.props.areaHud === false) hud.style.display = 'none';
+    if (hud && PROPS.areaHud === false) hud.style.display = 'none';
     wraps.forEach(w => { w.style.transform = ''; });
 
     /* 진입 인트로: 봉인 해제 */
@@ -985,7 +1002,7 @@ class Component extends DCLogic {
         intro.classList.add('out');
         setTimeout(() => intro.classList.add('done'), 600);
       };
-      if (reduce || this.props.introSeal === false || (seen && !force)) {
+      if (reduce || PROPS.introSeal === false || (seen && !force)) {
         finish(true);
       } else {
         body.classList.add('intro-lock', 'intro-pending');
@@ -1007,9 +1024,9 @@ class Component extends DCLogic {
         at(3250, () => finish(false));
         const skip = () => { timers.forEach(clearTimeout); clearInterval(tick); finish(false); };
         d.getElementById('introSkip')?.addEventListener('click', skip);
-        this._onKey = (e) => { if (e.key === 'Escape' && !intro.classList.contains('done')) skip(); };
-        addEventListener('keydown', this._onKey);
-        this._timers = timers;
+        STATE_onKey = (e) => { if (e.key === 'Escape' && !intro.classList.contains('done')) skip(); };
+        addEventListener('keydown', STATE_onKey);
+        STATE_timers = timers;
       }
     }
 
@@ -1082,9 +1099,9 @@ class Component extends DCLogic {
       }
       ticking = false;
     };
-    this._onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
-    addEventListener('scroll', this._onScroll, { passive: true });
-    addEventListener('resize', this._onScroll, { passive: true });
+    STATE_onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+    addEventListener('scroll', STATE_onScroll, { passive: true });
+    addEventListener('resize', STATE_onScroll, { passive: true });
     frame();
 
     /* 등장 모션 */
@@ -1116,7 +1133,7 @@ class Component extends DCLogic {
       hudDots.forEach(dt => dt.classList.toggle('on', dt.dataset.area === e.target.id));
     }), { rootMargin: '-42% 0px -52%' });
     q('main section[id]').forEach(s => nav.observe(s));
-    this._ios = [io, headIO, sectionIO, nav];
+    STATE_ios = [io, headIO, sectionIO, nav];
 
     /* 히어로 배경 글자 띠: 좌우 무한 루프 */
     const hwTracks = q('.hw-track');
@@ -1124,8 +1141,8 @@ class Component extends DCLogic {
       const halves = [];
       const measure = () => hwTracks.forEach((tr, i) => { halves[i] = tr.scrollWidth / 2; });
       measure();
-      this._onMeasure = measure;
-      addEventListener('resize', this._onMeasure, { passive: true });
+      STATE_onMeasure = measure;
+      addEventListener('resize', STATE_onMeasure, { passive: true });
       const speeds = [46, 30, 62];
       const loop = () => {
         const t = performance.now() / 1000;
@@ -1137,9 +1154,9 @@ class Component extends DCLogic {
           if (o < 0) o += half;
           tr.style.setProperty('--hwt', (dir < 0 ? -o : o - half).toFixed(1) + 'px');
         });
-        this._raf = requestAnimationFrame(loop);
+        STATE_raf = requestAnimationFrame(loop);
       };
-      this._raf = requestAnimationFrame(loop);
+      STATE_raf = requestAnimationFrame(loop);
     }
 
     /* 카드 틸트 */
@@ -1154,26 +1171,7 @@ class Component extends DCLogic {
         el.addEventListener('mouseleave', () => { el.style.transform = ''; });
       });
     }
-  }
-
-  componentWillUnmount() {
-    removeEventListener('scroll', this._onScroll);
-    removeEventListener('resize', this._onScroll);
-    if (this._onKey) removeEventListener('keydown', this._onKey);
-    if (this._onMeasure) removeEventListener('resize', this._onMeasure);
-    if (this._raf) cancelAnimationFrame(this._raf);
-    (this._timers || []).forEach(clearTimeout);
-    (this._ios || []).forEach(o => o.disconnect());
-  }
-
-  renderVals() { return {}; }
-}
-(function () {
-  var c = new Component();
-  c.props = {};
-  var start = function () { c.componentDidMount(); };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
-  else start();
+  
 })();
 </script>
 </body>
