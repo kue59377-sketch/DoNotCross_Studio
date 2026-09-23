@@ -755,6 +755,53 @@ body::after{opacity:var(--scanOp,.28)}
   .area-hud{display:none}
 }
 
+/* ===== RECRUIT v2: UI · 배경 · 시나리오 ===== */
+.recruit .recruit-ticker{height:30px;border-width:1px;background:#caa500}
+.recruit-in{padding:96px 0 104px}
+.recruit-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
+.recruit-kicker{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.recruit-kicker .mono{font-size:11px;font-weight:700;letter-spacing:.13em}
+.hiring-badge{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:#050505;padding:6px 10px;font:700 10px/1 "IBM Plex Mono",monospace;letter-spacing:.16em}
+.hiring-badge i{width:7px;height:7px;border-radius:50%;background:#050505;display:block;animation:blink 1.1s steps(1,end) infinite}
+.recruit-head p{margin-top:18px;max-width:560px;text-wrap:pretty}
+.recruit-stats{display:grid;grid-template-columns:auto auto auto;border:1px solid #292929;background:#0e0e0e}
+.recruit-stats>div{padding:16px 22px;border-right:1px solid #292929;display:flex;flex-direction:column;gap:6px}
+.recruit-stats>div:last-child{border-right:0}
+.recruit-stats span{color:#686256;font:600 9px/1 "IBM Plex Mono",monospace;letter-spacing:.14em}
+.recruit-stats b{font:600 13px/1 "IBM Plex Mono",monospace;color:var(--paper);padding-top:9px}
+.recruit-stats b.display{font:400 30px/1 "Black Han Sans",sans-serif;color:var(--yellow);padding-top:0}
+.openings{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:44px}
+.openings.in .opening:nth-child(3){transition-delay:.27s}
+.opening.job{padding:0;min-height:400px;display:flex;flex-direction:column}
+.opening.job:hover{border-color:#4a3e00}
+.job-top{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #292929}
+.job-live{color:var(--yellow);font:700 9px/1 "IBM Plex Mono",monospace;letter-spacing:.2em}
+.job-body{padding:26px 22px 24px;display:flex;flex-direction:column;flex:1}
+.job-en{color:#686256;font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.2em}
+.opening.job .role{font-size:44px;margin-top:10px}
+.opening.job p{margin:16px 0 0;max-width:none;text-wrap:pretty}
+.job-tasks{margin-top:22px;padding-top:16px;border-top:1px dashed #2a2a2a;display:flex;flex-direction:column;gap:8px}
+.jt-h{color:#9e8400;font:600 9px/1 "IBM Plex Mono",monospace;letter-spacing:.24em}
+.jt{display:flex;gap:10px;align-items:flex-start;color:#aca38f;font-size:13px;line-height:1.55}
+.jt i{font-style:normal;color:#665500;font:600 11px/1.7 "IBM Plex Mono",monospace}
+.recruit-note.apply{display:grid;grid-template-columns:220px minmax(0,1fr) auto;align-items:stretch;padding:0;gap:0}
+.ap-title{padding:24px 22px;border-right:1px solid #292929;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.ap-h{color:#9e8400;font:600 9px/1 "IBM Plex Mono",monospace;letter-spacing:.24em}
+.ap-title b{font:400 30px/1 "Black Han Sans",sans-serif;color:var(--paper)}
+.ap-title>span:last-child{color:#8f8879;font-size:13px;line-height:1.6}
+.ap-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.ap-steps li{padding:22px 20px;border-right:1px solid #292929;display:flex;flex-direction:column;gap:12px}
+.ap-steps i{font-style:normal;color:#665500;font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em}
+.ap-steps b{color:var(--paper);font-size:14px;font-weight:500}
+.ap-steps span{color:#6f6858;font-size:12px;line-height:1.55}
+.ap-actions{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:20px 22px}
+.recruit-note .ap-actions a{display:flex;justify-content:space-between;gap:16px;padding:12px 16px;border:1px solid #665500;color:#c3a300;font:600 11px/1 "IBM Plex Mono",monospace;white-space:nowrap}
+.recruit-note .ap-actions a.ap-primary{background:var(--yellow);border-color:var(--yellow);color:#050505;font-weight:700;letter-spacing:.06em}
+.recruit-note .ap-actions a:hover{border-color:var(--yellow);color:var(--yellow)}
+.recruit-note .ap-actions a.ap-primary:hover{color:#050505;background:#fff}
+@media(max-width:1000px){.openings{grid-template-columns:1fr}.opening.job{min-height:0}.recruit-note.apply{grid-template-columns:1fr}.ap-title,.ap-steps li{border-right:0;border-bottom:1px solid #292929}.ap-steps li:last-child{border-bottom:1px solid #292929}}
+@media(max-width:800px){.recruit-in{padding:82px 0}.recruit-head{grid-template-columns:1fr}.recruit-stats{grid-template-columns:1fr 1fr 1fr;justify-self:start}}
+
 </style>
 
 </head>
@@ -875,12 +922,55 @@ body::after{opacity:var(--scanOp,.28)}
 </section>
 
 <section id="recruit" class="recruit">
+  <div class="ticker recruit-ticker" aria-hidden="true"><div class="ticker-track"><span>NOW HIRING</span><span>출입금지</span><span>UI · 배경 · 시나리오</span><span>OPEN POSITIONS</span><span>BARI MUSIC OFFICE</span><span>DO NOT CROSS</span><span>NOW HIRING</span><span>출입금지</span><span>UI · 배경 · 시나리오</span><span>OPEN POSITIONS</span><span>BARI MUSIC OFFICE</span><span>DO NOT CROSS</span></div></div>
   <div class="wrap recruit-in">
-    <div class="recruit-head reveal"><div><div class="mono" style="font-size:11px;font-weight:700;letter-spacing:.13em;margin-bottom:16px">04 / RECRUIT</div><h2 class="display">함께 만들<br>사람을 찾습니다.</h2><p>아트 파트를 모집하고 있습니다.</p></div></div>
-    <div class="openings reveal">
-      <article class="opening"><span class="open-tag">OPEN / 01</span><div class="role">아트</div><p>UI, 배경, 캐릭터 스프라이트 작업. 현재 기획 자료와 기준 이미지가 있습니다.</p><a class="open-link" href="https://kue59377-sketch.github.io/bari-art-recruit/" target="_blank" rel="noopener"><span class="ol-stripe"></span><span class="ol-body"><span class="ol-code">PERMIT NO. 04A</span><span class="ol-txt">채용 공고 보기<i>→</i></span></span></a></article>
+    <div class="recruit-head reveal">
+      <div>
+        <div class="recruit-kicker"><span class="mono">04 / RECRUIT</span><span class="hiring-badge"><i></i>NOW HIRING · 3 POSITIONS</span></div>
+        <h2 class="display">함께 만들<br>사람을 찾습니다.</h2>
+        <p>「바리 음악사무소」의 UI, 배경, 시나리오 파트를 모집합니다. 수익 배분 · 디스코드 원격 협업 · PC.</p>
+      </div>
+      <div class="recruit-stats"><div><span>OPENINGS</span><b class="display">03</b></div><div><span>TYPE</span><b>REVENUE SHARE</b></div><div><span>DEADLINE</span><b>상시 모집</b></div></div>
     </div>
-    <div class="recruit-note reveal"><div><b>지원 방법</b><div style="margin-top:5px;color:#a89f8b;font-size:13px">작업물 링크와 짧은 소개를 보내주세요. 포트폴리오 형식은 자유입니다.</div></div><a href="#contact">CONTACT →</a></div>
+    <div class="openings reveal">
+      <article class="opening job">
+        <div class="job-top"><span class="open-tag">OPEN / 01</span><span class="job-live">● HIRING</span></div>
+        <div class="job-body">
+          <span class="job-en">UI</span>
+          <div class="role">UI</div>
+          <p>인게임 HUD, 노트 판정 표시, 메뉴와 결과 화면 등 게임 UI 전반을 디자인합니다.</p>
+          <div class="job-tasks"><span class="jt-h">TASKS</span><div class="jt"><i>▪</i><span>플레이 화면 HUD · 판정 이펙트</span></div><div class="jt"><i>▪</i><span>타이틀 · 챕터 선택 · 결과 화면</span></div><div class="jt"><i>▪</i><span>아이콘 · 버튼 등 UI 에셋 제작</span></div></div>
+        </div>
+      </article>
+      <article class="opening job">
+        <div class="job-top"><span class="open-tag">OPEN / 02</span><span class="job-live">● HIRING</span></div>
+        <div class="job-body">
+          <span class="job-en">BACKGROUND</span>
+          <div class="role">배경</div>
+          <p>시즌 1 네 챕터의 무대가 되는 사이드스크롤 배경을 그립니다. 기획 자료와 기준 이미지가 있습니다.</p>
+          <div class="job-tasks"><span class="jt-h">TASKS</span><div class="jt"><i>▪</i><span>챕터별 배경 컨셉 · 레이어 분리</span></div><div class="jt"><i>▪</i><span>음악사무소 등 주요 공간 배경</span></div><div class="jt"><i>▪</i><span>패럴랙스용 소품 · 오브젝트</span></div></div>
+        </div>
+      </article>
+      <article class="opening job">
+        <div class="job-top"><span class="open-tag">OPEN / 03</span><span class="job-live">● HIRING</span></div>
+        <div class="job-body">
+          <span class="job-en">SCENARIO</span>
+          <div class="role">시나리오</div>
+          <p>바리와 헤피아의 이야기를 함께 씁니다. 세계관 정리와 챕터별 대사 작업입니다.</p>
+          <div class="job-tasks"><span class="jt-h">TASKS</span><div class="jt"><i>▪</i><span>챕터 시나리오 · 대사 작성</span></div><div class="jt"><i>▪</i><span>의뢰 에피소드 구성</span></div><div class="jt"><i>▪</i><span>세계관 문서 정리 · 검수</span></div></div>
+        </div>
+      </article>
+    </div>
+    <div class="recruit-note apply reveal">
+      <div class="ap-title"><span class="ap-h">APPLY</span><b class="display">지원 방법</b><span>작업물 링크와 짧은 소개를 보내주세요.<br>포트폴리오 형식은 자유입니다.</span></div>
+      <ol class="ap-steps">
+        <li><i>01</i><b>지원 파트</b><span>UI · 배경 · 시나리오 중 선택</span></li>
+        <li><i>02</i><b>작업물 링크</b><span>형식 자유</span></li>
+        <li><i>03</i><b>2–3줄 소개</b><span>간단하게</span></li>
+        <li><i>04</i><b>주당 작업 시간</b><span>가능한 시간대</span></li>
+      </ol>
+      <div class="ap-actions"><a class="ap-primary" href="https://kue59377-sketch.github.io/bari-art-recruit/" target="_blank" rel="noopener"><span>채용 공고 보기</span><span>→</span></a><a href="#contact"><span>CONTACT</span><span>→</span></a></div>
+    </div>
   </div>
 </section>
 
