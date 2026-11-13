@@ -755,7 +755,7 @@ body::after{opacity:var(--scanOp,.28)}
   .area-hud{display:none}
 }
 
-/* ===== RECRUIT v2: UI · 배경 ===== */
+/* ===== RECRUIT v2: 애니메이터 ===== */
 .recruit .recruit-ticker{height:30px;border-width:1px;background:#caa500}
 .recruit-in{padding:96px 0 104px}
 .recruit-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
@@ -770,7 +770,7 @@ body::after{opacity:var(--scanOp,.28)}
 .recruit-stats span{color:#686256;font:600 9px/1 "IBM Plex Mono",monospace;letter-spacing:.14em}
 .recruit-stats b{font:600 13px/1 "IBM Plex Mono",monospace;color:var(--paper);padding-top:9px}
 .recruit-stats b.display{font:400 30px/1 "Black Han Sans",sans-serif;color:var(--yellow);padding-top:0}
-.openings{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:44px}
+.openings{grid-template-columns:minmax(0,1fr);max-width:760px;gap:14px;margin-top:44px}
 .openings.in .opening:nth-child(3){transition-delay:.27s}
 .opening.job{padding:0;min-height:400px;display:flex;flex-direction:column}
 .opening.job:hover{border-color:#4a3e00}
@@ -923,40 +923,31 @@ body::after{opacity:var(--scanOp,.28)}
 </section>
 
 <section id="recruit" class="recruit">
-  <div class="ticker recruit-ticker" aria-hidden="true"><div class="ticker-track"><span>NOW HIRING</span><span>출입금지</span><span>UI · 배경</span><span>OPEN POSITIONS</span><span>BARI MUSIC OFFICE</span><span>DO NOT CROSS</span><span>NOW HIRING</span><span>출입금지</span><span>UI · 배경</span><span>OPEN POSITIONS</span><span>BARI MUSIC OFFICE</span><span>DO NOT CROSS</span></div></div>
+  <div class="ticker recruit-ticker" aria-hidden="true"><div class="ticker-track"><span>NOW HIRING</span><span>출입금지</span><span>애니메이션</span><span>OPEN POSITIONS</span><span>BARI MUSIC OFFICE</span><span>DO NOT CROSS</span><span>NOW HIRING</span><span>출입금지</span><span>애니메이션</span><span>OPEN POSITIONS</span><span>BARI MUSIC OFFICE</span><span>DO NOT CROSS</span></div></div>
   <div class="wrap recruit-in">
     <div class="recruit-head reveal">
       <div>
-        <div class="recruit-kicker"><span class="mono">04 / RECRUIT</span><span class="hiring-badge"><i></i>NOW HIRING · 2 POSITIONS</span></div>
+        <div class="recruit-kicker"><span class="mono">04 / RECRUIT</span><span class="hiring-badge"><i></i>NOW HIRING · 1 POSITION</span></div>
         <h2 class="display">함께 만들<br>사람을 찾습니다.</h2>
-        <p>「바리 음악사무소」의 UI, 배경 파트를 모집합니다. 수익 배분 · 디스코드 원격 협업 · PC.</p>
+        <p>「바리 음악사무소」의 애니메이터를 모집합니다. 수익 배분 · 디스코드 원격 협업 · PC.</p>
       </div>
-      <div class="recruit-stats"><div><span>OPENINGS</span><b class="display">02</b></div><div><span>TYPE</span><b>REVENUE SHARE</b></div><div><span>DEADLINE</span><b>상시 모집</b></div></div>
+      <div class="recruit-stats"><div><span>OPENINGS</span><b class="display">01</b></div><div><span>TYPE</span><b>REVENUE SHARE</b></div><div><span>DEADLINE</span><b>상시 모집</b></div></div>
     </div>
     <div class="openings reveal">
       <article class="opening job">
         <div class="job-top"><span class="open-tag">OPEN / 01</span><span class="job-live">● HIRING</span></div>
         <div class="job-body">
-          <span class="job-en">UI</span>
-          <div class="role">UI</div>
-          <p>인게임 HUD, 노트 판정 표시, 메뉴와 결과 화면 등 게임 UI 전반을 디자인합니다.</p>
-          <div class="job-tasks"><span class="jt-h">TASKS</span><div class="jt"><i>▪</i><span>플레이 화면 HUD · 판정 이펙트</span></div><div class="jt"><i>▪</i><span>타이틀 · 챕터 선택 · 결과 화면</span></div><div class="jt"><i>▪</i><span>아이콘 · 버튼 등 UI 에셋 제작</span></div></div>
-        </div>
-      </article>
-      <article class="opening job">
-        <div class="job-top"><span class="open-tag">OPEN / 02</span><span class="job-live">● HIRING</span></div>
-        <div class="job-body">
-          <span class="job-en">BACKGROUND</span>
-          <div class="role">배경</div>
-          <p>시즌 1 네 챕터의 무대가 되는 사이드스크롤 배경을 그립니다. 기획 자료와 기준 이미지가 있습니다.</p>
-          <div class="job-tasks"><span class="jt-h">TASKS</span><div class="jt"><i>▪</i><span>챕터별 배경 컨셉 · 레이어 분리</span></div><div class="jt"><i>▪</i><span>음악사무소 등 주요 공간 배경</span></div><div class="jt"><i>▪</i><span>패럴랙스용 소품 · 오브젝트</span></div></div>
+          <span class="job-en">ANIMATION</span>
+          <div class="role">애니메이터</div>
+          <p>주인공 캐릭터의 인게임 모션과 컷신용 포즈를 만듭니다. 캐릭터 디자인은 확정되어 있습니다.</p>
+          <div class="job-tasks"><span class="jt-h">TASKS</span><div class="jt"><i>▪</i><span>캐릭터 달리기 애니메이션</span></div><div class="jt"><i>▪</i><span>정적인 포즈 4종</span></div></div>
         </div>
       </article>
     </div>
     <div class="recruit-note apply reveal">
       <div class="ap-title"><span class="ap-h">APPLY</span><b class="display">지원 방법</b><span>작업물 링크와 짧은 소개를 보내주세요.<br>포트폴리오 형식은 자유입니다.</span></div>
       <ol class="ap-steps">
-        <li><i>01</i><b>지원 파트</b><span>UI · 배경 중 선택</span></li>
+        <li><i>01</i><b>지원 파트</b><span>애니메이터</span></li>
         <li><i>02</i><b>작업물 링크</b><span>형식 자유</span></li>
         <li><i>03</i><b>2–3줄 소개</b><span>간단하게</span></li>
         <li><i>04</i><b>주당 작업 시간</b><span>가능한 시간대</span></li>
